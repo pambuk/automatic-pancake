@@ -50,7 +50,7 @@ class ExpenseController extends Controller
     public function update(ExpenseRequest $request, $id)
     {
         $expense = Expense::find($id);
-        $expense->fill($request->all());
+        $expense->fill($request->input('params'));
         return response()->json(['expense' => $expense]);
     }
 
