@@ -1,1 +1,2 @@
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const GET_EXPENSES_LIST = 'GET_EXPENSES_LIST';

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use App\Http\Requests\ExpenseRequest;
+use Carbon\Carbon;
 
 class ExpenseController extends Controller
 {
@@ -14,7 +15,12 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        return response()->json(['expenses' => Expense::all()]);
+        $currentMonthStart = Carbon::now()->startOfMonth();
+        $currentMonthEnd = Carbon::now()->endOfMonth();
+
+        return response()->json([
+            'expenses' => Expense::whereBetween('date', [$currentMonthStart, $currentMonthEnd])->get(),
+        ]);
     }
 
     /**
