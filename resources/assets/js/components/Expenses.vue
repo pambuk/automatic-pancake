@@ -10,12 +10,15 @@
             </div>
 
         </div>
+
+        <expense-list></expense-list>
     </div>
 </template>
 
 <script>
     import {mapActions} from 'vuex';
     import moment from 'moment';
+    import ExpenseList from './ExpenseList.vue';
 
     export default {
         data() {
@@ -28,6 +31,9 @@
         },
         methods: {
             ...mapActions(['add'])
+        },
+        components: {
+            'expense-list': ExpenseList
         }
     }
 </script>
