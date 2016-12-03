@@ -9,5 +9,13 @@ export const add = ({commit}, payload) => {
         })
         .catch(response => {
             console.log('catch', response);
-        })
+        });
+};
+
+export const fetchExpenses = ({commit}) => {
+    ExpensesService
+        .get()
+        .then(response => {
+            commit(types.GET_EXPENSES_LIST, response.data.expenses);
+        });
 };
